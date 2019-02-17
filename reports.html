@@ -12950,18 +12950,34 @@ The prediction time is about 0.028 seconds, which also much slower than the othe
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
 <p><h3>Gradient Boosting</h3>
-<br/>
-<strong>Training</strong><br/>
-Boosting focus on area where the system is not performing well, by increase the chances of these lowest performed area being picked again for training.<br>
-<br/><br/>
-<strong>Prediction</strong><br/>
-For each data point X, there will be a prediction Y.<br/>
-The model will ask a number of questions (decision trees) about the data point, and depend on the answers, the data point will land on 1 of the 2 classes (2 leaf nodes), the 2 leaf nodes are '&gt;50000' or '&lt;=50000' 
 <br/></p>
+<p><strong>Major Qualities</strong><br/>
+Gradient boosting is a process of turning a set of weak learners into a strong learner.<br/>
+A weak learner is a classifier slightly correlated with the true classification, a bit better than random guessing.<br/>
+A strong learner is a classifier well correlated with the true classification. <br/></p>
+<p><strong>How does the model learn?</strong><br/>
+Boosting iteratively pick weak learners, and add weak learners to a final strong classifier. <br/>
+Learners are weighted related to the learner prediction accuracy. <br/>
+Weak learners (input data misclassified) will gain weight on next training.<br/>
+Strong learners (input data classified correctly) will loses weight on next training.<br/></p>
+<p>Gradient boosting learn by focus on area where it is not learning well.<br/>
+An self made example:<br/>
+There are 10 students (data points) taking an exam (prediction), there are 5 students perform poorly by scoring below 40% (these are the weak learners).<br/>
+The teacher (model) decided to spend more effort (gain weight) on these poorly performed students on the next class (training), and spend less effort (lose weight) with the students who performed well (strong learners). <br/>
+After the 2nd exam (2nd prediction), there are now only 2 students perform poorly scoring below 40%, again the teacher spend more effort on the next class on these 2 students that performed poorly. <br/>
+And after many exams and classes, there are no students score below 40% (No weak learners)<br/></p>
+<p><strong>How does the model predict?</strong><br/>
+Boosting uses individual weak learners and make individual predictions, each of these prediction are weighted by each weak learner accuracy in training, combine all these predictions gives a single strong prediction.
+<br/><br/>
+An self made example:<br/>
+The whole class of 10 students have been asked a new exam question by the headmaster (New Input), each student (weak learner) gave an individual answer, the answer are weighted according to their individual exam results (accuracy), the teacher collects all these results (predictions) and pick the most likely answer (single strong learner).
+<br/><br/></p>
 <p><strong>Reference</strong></p>
 <p><ul>
     <li>Gradient boosting Wiki<br/>
     https://en.wikipedia.org/wiki/Gradient_boosting
+    <li>Boosting (machine learning)<br/>
+    https://en.wikipedia.org/wiki/Boosting_(machine_learning)
     <li>Udacity - Ensemble learners<br/>
     https://www.youtube.com/watch?v=Un9zObFjBH0
     <li>Udacity - Bootstrap aggregating bagging<br/>
